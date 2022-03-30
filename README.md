@@ -17,6 +17,8 @@ cd openmpi-docker
 docker build . -t <IMAGE_NAME>
 ```
 
+Now you can go and get a cup of tea or coffee, because this will take a while, 10-20 minutes.
+
 You would then run this command to start the bash shell (same as above in the quickstart except the image name is changed)
 
 ```
