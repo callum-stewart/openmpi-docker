@@ -1,5 +1,5 @@
 # syntax=docker/dockerfile:1
-FROM ubuntu:20.04
+FROM ubuntu:20.04 as build
 
 ENV OPENMPI_VERSION=4.1.2
 ENV DEBIAN_FRONTEND=noninteractive
@@ -19,9 +19,12 @@ RUN mkdir /tmp/mpi && \
     rm -rf /tmp/mpi && \
     rm -rf /mpi
 
+FROM scratch
+COPY --from=build / /
+
 RUN mkdir /app
 WORKDIR /app
 
 COPY . .
 
-CMD bash
+CMD ["/bin/bash"]
